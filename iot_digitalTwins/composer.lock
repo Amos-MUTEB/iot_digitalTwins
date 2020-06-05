@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8f9e9e6997f9c08a717b9a36f1cf1b4",
+    "content-hash": "cb03adc70585bdcdbca656be0c3731fb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1272,6 +1272,43 @@
                 "validator"
             ],
             "time": "2020-02-13T22:36:52+00:00"
+        },
+        {
+            "name": "karpy47/php-mqtt-client",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/karpy47/PhpMqttClient.git",
+                "reference": "85054c4cb40e7eb0b931a33e081e540a14085ec3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/karpy47/PhpMqttClient/zipball/85054c4cb40e7eb0b931a33e081e540a14085ec3",
+                "reference": "85054c4cb40e7eb0b931a33e081e540a14085ec3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "karpy47\\PhpMqttClient\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "karpy47"
+                }
+            ],
+            "description": "MQTT 3.1.1 library for PHP with TLS support",
+            "keywords": [
+                "client",
+                "mqtt",
+                "php"
+            ],
+            "time": "2019-07-29T13:52:45+00:00"
         },
         {
             "name": "laminas/laminas-code",

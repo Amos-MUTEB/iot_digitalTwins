@@ -81,6 +81,9 @@
     "egulias/email-validator": {
         "version": "2.1.17"
     },
+    "karpy47/php-mqtt-client": {
+        "version": "v1.0.4"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
