@@ -39,3 +39,13 @@ body{
     justify-content: center;
     margin-top: 20px;
 }
+
+@media screen and (max-width: 850px)
+
+{
+
+    #main_container{
+        display: grid;
+    }
+
+}
