@@ -52,7 +52,7 @@ class IndexController extends AbstractController
             $message= "Time out!";
         }
 
-        return $this->render('index/index.html.twig', [
+        return $this->render('index/home.html.twig', [
             'controller_name' => 'IndexController',
             'message' => $message,
             'temp' => json_encode($temp),
