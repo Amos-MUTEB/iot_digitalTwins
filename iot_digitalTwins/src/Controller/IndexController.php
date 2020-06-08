@@ -8,10 +8,22 @@ use Bluerhinos\phpMQTT;
 
 class IndexController extends AbstractController
 {
+
+    
     /**
-     * @Route("/", name="index")
-     */
+    * @Route("/", name="index")
+    */
     public function index()
+    {
+        
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'IndexController',
+        ]);
+    }
+    /**
+     * @Route("/home", name="home")
+     */
+    public function home()
     {
         // $server = '1nygvs.messaging.internetofthings.ibmcloud.com';     // change if necessary
         // $port = 1883;                     // change if necessary
@@ -62,10 +74,11 @@ class IndexController extends AbstractController
         //         echo "\t$msg\n\n";
         // }
 
-        return $this->render('index/index.html.twig', [
+        return $this->render('index/home.html.twig', [
             'controller_name' => 'IndexController',
             'message' => $message,
             'temp' => json_encode($temp),
         ]);
     }
+    
 }

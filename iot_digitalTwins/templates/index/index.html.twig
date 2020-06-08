@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Test corona!{% endblock %}
+{% block title %}Appli digital twins!{% endblock %}
 
 {% block body %}
 <style>
@@ -8,11 +8,21 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-
-    <p> {{message}} </p>
-    <p> {{temp}} </p>
+<div class="title">
+    <h2>Digital Twins Coronavirus ✅</h2>
+</div>
+<div id="main_container">
+<div id="container">
+<label for="inputEmail" class="sr-only">pseudo</label>
+  <input type="email" id="inputEmail" class="form-control" placeholder="Pseudo" required autofocus>
+  <label for="inputPassword" class="sr-only">Mot de passe</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="ID de la personne" required>
+  <div class="checkbox mb-3">
+    <label>
+      <input class="alignText" type="checkbox" value="remember-me"> Se rappeller de moi
+    </label>
+  </div>
+   <a href="{{ path('home') }}"> <button class="btn btn-lg btn-primary btn-block" type="submit">VALIDER</button></a>
+</div>
 </div>
 {% endblock %}
