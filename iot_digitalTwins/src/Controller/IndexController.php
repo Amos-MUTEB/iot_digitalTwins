@@ -4,40 +4,68 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use karpy47\PhpMqttClient\MQTTClient;
+use Bluerhinos\phpMQTT;
 
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/index", name="index")
+     * @Route("/", name="index")
      */
     public function index()
     {
-        $client = new MQTTClient('mqtt://1nygvs.messaging.internetofthings.ibmcloud.com', 1883);
-        //$client->setAuthentication('a-1nygvs-3bjuxelljp','6&IycaE?t(jerfIC5v');
-        $client->setAuthentication('use-token-auth','AkaneTest');
-        //$client->setEncryption('cacerts.pem');
-        //$success = $client->sendConnect("a:1nygvs:3bjuxelljp");  // set your client ID
-        $success = $client->sendConnect("d:1nygvs:DTC:Akane");  // set your client ID
+        // $server = '1nygvs.messaging.internetofthings.ibmcloud.com';     // change if necessary
+        // $port = 1883;                     // change if necessary
+        // $username = 'use-token-auth';                   // set your username
+        // $password = 'AkaneTest';                   // set your password
+        // $client_id = 'd:1nygvs:DTC:Akane'; // make sure this is unique for connecting to sever - you could use uniqid()
         
-        if ($success) {
-            $client->sendSubscribe('topic1');
-            $client->sendPublish('topic2', 'Message to all subscribers of this topic');
-            $messages = $client->getPublishMessages();  // now read and acknowledge all messages waiting
-            foreach ($messages as $message) {
-                echo $message['topic'] .': '. $message['message'] . PHP_EOL;
-                // Other keys in $message array: retain (boolean), duplicate (boolean), qos (0-2), packetId (2-byte integer)
-            }
-            $client->sendDisconnect();
-            $message="bon";    
+
+        $server = '1nygvs.messaging.internetofthings.ibmcloud.com';     // change if necessary
+        $port = 1883;                     // change if necessary
+        $username = 'a-1nygvs-avu0otj3wv';                   // set your username
+        $password = 'sfT02PH1sJn0lsSZcL';                   // set your password
+        $client_id = 'a:1nygvs:avu0otj3wv'; // make sure this is unique for connecting to sever - you could use uniqid()
+        
+        $mqtt = new phpMQTT($server, $port, $client_id);
+        
+        $temp=["temp" => 50];
+
+        if ($mqtt->connect(true, NULL, $username, $password)) {
+            //$mqtt->publish('iot-2/evt/temp/fmt/json', json_encode($temp), 0, false);
+            $mqtt->publish('iot-2/type/DTC/id/Akane/evt/temp/fmt/json', json_encode($temp), 0, false);
+
+            $mqtt->close();
+            $message ="good";
+        } else {
+            $message= "Time out!";
         }
-        else{
-            $message="pas bon";
-        }
-        $client->close();
+
+        // $mqtt = new phpMQTT($server, $port, $client_id);
+        // if(!$mqtt->connect(true, NULL, $username, $password)) {
+        //     exit(1);
+        // }
+        
+        // $mqtt->debug = true;
+        
+        // $topics['iot-2/type/DTC/id/Akane/evt/temp/fmt/json'] = array('qos' => 0, 'function' => 'procMsg');
+        // $mqtt->subscribe($topics, 0);
+        
+        // while($mqtt->proc()) {
+        
+        // }
+        
+        // $mqtt->close();
+        
+        // function procMsg($topic, $msg){
+        //         echo 'Msg Recieved: ' . date('r') . "\n";
+        //         echo "Topic: {$topic}\n\n";
+        //         echo "\t$msg\n\n";
+        // }
+
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
-            'message' => $message
+            'message' => $message,
+            'temp' => json_encode($temp),
         ]);
     }
 }
