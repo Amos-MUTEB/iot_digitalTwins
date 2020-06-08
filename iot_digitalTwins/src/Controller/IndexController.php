@@ -46,9 +46,9 @@ class IndexController extends AbstractController
 
 
     /**
-     * @Route("/publish/{temperature}", name="publish")
+     * @Route("/publish/{temperature}/{id}", name="publish")
      */
-    public function publish(Request $request,$temperature)
+    public function publish(Request $request,$temperature,$id)
     {
         $server = '1nygvs.messaging.internetofthings.ibmcloud.com';     // change if necessary
         $port = 1883;                     // change if necessary
@@ -74,7 +74,7 @@ class IndexController extends AbstractController
 
         if ($mqtt->connect(true, NULL, $username, $password)) {
             //$mqtt->publish('iot-2/evt/temp/fmt/json', json_encode($temp), 0, false);
-            $mqtt->publish('iot-2/type/DTC/id/Akane/evt/temp/fmt/json', json_encode($temp), 0, false);
+            $mqtt->publish('iot-2/type/DTC/id/DTC_'.$id.'/evt/temp/fmt/json', json_encode($temp), 0, false);
 
             $mqtt->close();
             $message ="good";

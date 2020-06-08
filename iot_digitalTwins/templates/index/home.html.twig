@@ -16,6 +16,7 @@
         <div class="mb-3">
             Connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
+        <p>Mon ID : {{ app.user.id }}</p>
         </div>
     </div>
 
@@ -24,7 +25,7 @@
         <div class="column2">
             <label for="inputEmail" class="sr-only">pseudo</label>
             <p>Température actuelle : {{ temperature }} </p>
-             <a href="{{ path('publish', {'temperature': temperature}) }}"> <button class="btn btn-lg btn-primary btn-block" type="submit">PUBLISH</button> </a>
+             <a href="{{ path('publish', {'temperature': temperature, 'id': app.user.id}) }}"> <button class="btn btn-lg btn-primary btn-block" type="submit">PUBLISH</button> </a>
         </div>
     </div>
 
