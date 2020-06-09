@@ -1,0 +1,19 @@
+{
+    "name": "karpy47/php-mqtt-client",
+    "description": "MQTT 3.1.1 library for PHP with TLS support",
+    "keywords": [ "mqtt", "client", "php" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "karpy47"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "karpy47\\PhpMqttClient\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+    }
+}

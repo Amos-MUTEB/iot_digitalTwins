@@ -1,0 +1,8 @@
+{
+    "require": {
+        "karpy47/php-mqtt-client": "^1.0",
+        "bluerhinos/phpmqtt": "@dev",
+        "php-mqtt/client": "^0.1.2",
+        "workerman/mqtt": "^1.0"
+    }
+}
